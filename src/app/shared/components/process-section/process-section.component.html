@@ -1,0 +1,19 @@
+<section class="process-section" id="process">
+  <div class="section-header">
+    <span class="section-tag">// How It Works</span>
+    <h2>YOUR PATH TO PLAY</h2>
+    <p class="section-desc">
+      Every great game follows a design path. So does every great business transformation.
+    </p>
+  </div>
+
+  <div class="process-steps">
+    @for (step of steps; track step.num) {
+      <div class="process-step">
+        <div class="step-num">{{ step.num }}</div>
+        <h4>{{ step.title }}</h4>
+        <p>{{ step.description }}</p>
+      </div>
+    }
+  </div>
+</section>

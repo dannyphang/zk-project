@@ -4,12 +4,10 @@ import { AppComponent } from './app.component';
 
 @NgModule({
     declarations: [
-        AppComponent
     ],
     imports: [
         ...imports, // Spread imports array here
     ],
     providers: [],
-    bootstrap: [AppComponent],
 })
 export class AppModule { }

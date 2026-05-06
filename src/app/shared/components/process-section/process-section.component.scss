@@ -1,0 +1,107 @@
+.process-section {
+  padding: 80px 60px;
+  position: relative;
+  z-index: 1;
+  background: rgba(8,14,31,0.5);
+  border-top: 1px solid var(--dark-border);
+  border-bottom: 1px solid var(--dark-border);
+
+  @media (max-width: 900px) { padding: 60px 30px; }
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--neon-violet);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.section-desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.process-steps {
+  display: flex;
+  gap: 0;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-violet), var(--neon-cyan), transparent);
+    z-index: 0;
+  }
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 40px;
+
+    &::before { display: none; }
+  }
+}
+
+.process-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+}
+
+.step-num {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--dark-card);
+  border: 2px solid var(--neon-violet);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', monospace;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--neon-violet);
+  margin: 0 auto 20px;
+  box-shadow: 0 0 20px rgba(155,92,246,0.3);
+}
+
+h4 {
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}

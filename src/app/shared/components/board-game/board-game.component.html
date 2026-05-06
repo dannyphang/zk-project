@@ -1,0 +1,54 @@
+<!-- Strategy Cards -->
+<div class="cards-row">
+  @for (card of game.strategyCards; track card.id) {
+    <div
+      class="game-card"
+      [class.active]="activeCard() === card.id"
+      (click)="onCardClick(card.id, card.message)"
+    >
+      <div class="card-icon">{{ card.icon }}</div>
+      <div class="card-label">{{ card.label }}</div>
+    </div>
+  }
+</div>
+
+<!-- Board -->
+<div class="board-container" #boardContainer>
+  <div class="board-bg">
+    <div class="board-path">
+      @for (row of boardRows; track $index) {
+        <div class="board-row" [class.reverse]="reverseRow[$index]">
+          @for (cell of row; track cell.index) {
+            <div #cellEl [attr.data-index]="cell.index" [class]="cellClass(cell)">
+              <div class="cell-step">{{ cell.index }}</div>
+              {{ cell.label }}
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Controls -->
+    <div class="game-controls">
+      <div class="dice-display" [class.rolling]="diceAnimating()">
+        {{ game.diceValue() }}
+      </div>
+
+      <button class="btn-roll" (click)="onRoll()">
+        {{ game.gameWon() ? '🚀 LAUNCHED!' : '⚀ ROLL DICE' }}
+      </button>
+
+      <div class="step-counter">
+        STEP <span class="step-num">{{ game.currentStep() }}</span
+        >/14
+      </div>
+    </div>
+
+    <div class="game-status">{{ game.gameStatus() }}</div>
+  </div>
+
+  <!-- Floating token -->
+  @if (tokenVisible()) {
+    <div class="token" [style.left]="tokenLeft()" [style.top]="tokenTop()"></div>
+  }
+</div>

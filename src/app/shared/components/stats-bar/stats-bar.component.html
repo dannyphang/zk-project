@@ -1,0 +1,13 @@
+<div class="stats-bar" #statsEl>
+  @for (stat of statDefs; track stat.label; let i = $index) {
+    @if (i > 0) {
+      <div class="stat-divider"></div>
+    }
+    <div class="stat-item">
+      <div class="stat-num">
+        <span>{{ displayValues()[i] }}</span>{{ stat.suffix }}
+      </div>
+      <div class="stat-label">{{ stat.label }}</div>
+    </div>
+  }
+</div>

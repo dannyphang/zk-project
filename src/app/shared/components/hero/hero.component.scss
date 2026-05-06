@@ -1,0 +1,125 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 120px 60px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  z-index: 1;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    padding: 100px 30px 60px;
+  }
+}
+
+.hero-left { position: relative; }
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid rgba(155,92,246,0.4);
+  background: rgba(155,92,246,0.08);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--neon-violet);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+
+  &::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--neon-violet);
+    animation: blink 1.5s ease-in-out infinite;
+  }
+}
+
+h1 {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  color: #fff;
+
+  .cyan { color: var(--neon-cyan); }
+}
+
+.hero-subtitle-cn {
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  color: var(--neon-cyan);
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.hero-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 420px;
+  margin-bottom: 36px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.btn-primary {
+  padding: 14px 30px;
+  background: linear-gradient(135deg, var(--neon-violet), #6366f1);
+  border: none;
+  color: #fff;
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 0 30px rgba(155,92,246,0.4);
+  text-transform: uppercase;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 50px rgba(155,92,246,0.6);
+  }
+}
+
+.btn-secondary {
+  padding: 14px 30px;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  color: var(--text-muted);
+  font-family: 'Orbitron', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+
+  &:hover {
+    border-color: rgba(255,255,255,0.4);
+    color: var(--text-primary);
+  }
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}

@@ -1,0 +1,21 @@
+<section class="section" id="services">
+  <div class="section-header">
+    <span class="section-tag">// What We Build</span>
+    <h2>OUR CORE SERVICES</h2>
+    <p class="section-desc">
+      From boardroom to boardgame — we design solutions that make learning stick,
+      teams bond, and companies grow.
+    </p>
+  </div>
+
+  <div class="services-grid">
+    @for (svc of services; track svc.title) {
+      <div class="service-card" [ngClass]="svc.colorClass">
+        <div class="service-icon-wrap">{{ svc.icon }}</div>
+        <h3>{{ svc.title }}</h3>
+        <p>{{ svc.description }}</p>
+        <span class="service-badge">{{ svc.badge }}</span>
+      </div>
+    }
+  </div>
+</section>
