@@ -1,0 +1,285 @@
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">G▶</div>
+    <span class="logo-text">GPLAY</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Case Studies</a></li>
+    <li><a href="#">Insights</a></li>
+    <li><a href="#">About Us</a></li>
+  </ul>
+  <button class="btn-contact" (click)="showToast('Opening contact form...')">Contact Us</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Enterprise Gamification Studio</div>
+    <h1>TRANSFORMING<br />BUSINESS<br />THROUGH <span class="cyan">PLAY.</span></h1>
+    <p class="hero-subtitle-cn">企业游戏化转型与设计</p>
+    <p class="hero-desc">
+      We create more engagement through innovative game solutions for global businesses. Where
+      strategy meets play — turning your team into champions.
+    </p>
+    <div class="hero-cta">
+      <button class="btn-primary" (click)="showToast('Let\'s build something extraordinary!')">
+        Start Your Journey
+      </button>
+      <button class="btn-secondary" (click)="scrollToServices()">Explore Services</button>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="cards-row">
+      <div
+        class="game-card"
+        (click)="
+          activateCard(
+            $event.currentTarget,
+            'Strategy: Align team goals with company OKRs using game mechanics.'
+          )
+        "
+        id="card-strategy"
+      >
+        <div class="card-icon">🎯</div>
+        <div class="card-label">Strategy Card</div>
+      </div>
+      <div
+        class="game-card"
+        (click)="
+          activateCard(
+            $event.currentTarget,
+            'Chance: A surprise challenge boosts team morale by 40%!'
+          )
+        "
+        id="card-chance"
+      >
+        <div class="card-icon">🎲</div>
+        <div class="card-label">Chance Card</div>
+      </div>
+      <div
+        class="game-card"
+        (click)="
+          activateCard(
+            $event.currentTarget,
+            'Knowledge: Complete the training module. Gain 2 XP points!'
+          )
+        "
+        id="card-knowledge"
+      >
+        <div class="card-icon">📚</div>
+        <div class="card-label">Knowledge Card</div>
+      </div>
+      <div
+        class="game-card"
+        (click)="
+          activateCard($event.currentTarget, 'Power Up: Double your productivity score this round!')
+        "
+        id="card-power"
+      >
+        <div class="card-icon">⚡</div>
+        <div class="card-label">Power Card</div>
+      </div>
+    </div>
+
+    <div class="board-container">
+      <div class="board-bg">
+        <div class="board-path" id="boardPath">
+          <div
+            *ngFor="let row of rows; let ri = index"
+            class="board-row"
+            [class.reverse]="reverseRows[ri]"
+          >
+            <ng-container
+              *ngFor="let c of reverseRows[ri] ? getReversed(row) : row; let ci = index"
+            >
+              <div
+                class="cell {{ c.type || '' }}"
+                [class.active-cell]="currentStep === getRealIndex(ri, ci)"
+                [class.passed]="currentStep > getRealIndex(ri, ci)"
+                [attr.data-index]="getRealIndex(ri, ci)"
+              >
+                <div class="cell-step">{{ getRealIndex(ri, ci) }}</div>
+                {{ c.label }}
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="game-controls">
+          <div class="dice-display" [class.rolling]="isRolling" id="diceDisplay">
+            {{ diceText }}
+          </div>
+          <button
+            class="btn-roll"
+            id="rollBtn"
+            [disabled]="isRolling || currentStep >= 14"
+            (click)="rollDice()"
+          >
+            ⚀ ROLL DICE
+          </button>
+          <div
+            style="font-family: 'Orbitron', monospace; font-size: 11px; color: var(--text-muted)"
+          >
+            STEP <span style="color: var(--neon-cyan); font-weight: 700">{{ currentStep }}</span
+            >/14
+          </div>
+        </div>
+        <div class="game-status">{{ gameStatus }}</div>
+      </div>
+      <div
+        class="token"
+        [style.display]="isTokenVisible ? 'block' : 'none'"
+        [style.left.px]="tokenLeft"
+        [style.top.px]="tokenTop"
+      ></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-section">
+  <div class="marquee-track">
+    <ng-container *ngFor="let t of doubledItems">
+      <div class="marquee-item">
+        <div class="marquee-dot"></div>
+        {{ t }}
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">
+      <span>{{ stat1 }}</span
+      >+
+    </div>
+    <div class="stat-label">Games Built</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num">
+      <span>{{ stat2 }}</span
+      >K+
+    </div>
+    <div class="stat-label">Learners Trained</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num">
+      <span>{{ stat3 }}</span
+      >+
+    </div>
+    <div class="stat-label">Industries Served</div>
+  </div>
+</div>
+
+<section class="section" id="services">
+  <div class="section-header">
+    <span class="section-tag">// What We Build</span>
+    <h2>OUR CORE SERVICES</h2>
+    <p class="section-desc">
+      From boardroom to boardgame — we design solutions that make learning stick, teams bond, and
+      companies grow.
+    </p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card card-1">
+      <div class="service-icon-wrap">🏆</div>
+      <h3>Game-Based Training</h3>
+      <p>
+        Custom training simulations that replace boring slide decks. Your employees learn by doing —
+        competing, collaborating, and leveling up through real corporate scenarios.
+      </p>
+      <span class="service-badge">🎓 Corporate L&D</span>
+    </div>
+    <div class="service-card card-2">
+      <div class="service-icon-wrap">♟️</div>
+      <h3>Boardgame Design</h3>
+      <p>
+        We craft unique physical and digital boardgames tailored for team-building retreats,
+        onboarding experiences, and leadership development programs.
+      </p>
+      <span class="service-badge">🎲 Team Building</span>
+    </div>
+    <div class="service-card card-3">
+      <div class="service-icon-wrap">🔮</div>
+      <h3>Gamification Consulting</h3>
+      <p>
+        Audit your existing systems and inject game dynamics — points, badges, leaderboards, and
+        narrative arcs — into any workflow, app, or organizational process.
+      </p>
+      <span class="service-badge">⚡ Any Industry</span>
+    </div>
+  </div>
+</section>
+
+<section class="process-section" id="process">
+  <div class="section-header">
+    <span class="section-tag">// How It Works</span>
+    <h2>YOUR PATH TO PLAY</h2>
+    <p class="section-desc">
+      Every great game follows a design path. So does every great business transformation.
+    </p>
+  </div>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <h4>Discovery</h4>
+      <p>
+        We audit your business goals, culture, and pain points to identify gamification
+        opportunities.
+      </p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <h4>Concept</h4>
+      <p>
+        Our designers sketch game mechanics, narrative arcs, and engagement loops tailored to your
+        brand.
+      </p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <h4>Prototype</h4>
+      <p>
+        Rapid playtesting with real teams. We iterate fast until the game actually works and
+        delights.
+      </p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <h4>Launch</h4>
+      <p>
+        Full deployment with facilitator training, analytics dashboards, and ongoing optimization
+        support.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">
+    <h3>GPLAY STUDIO</h3>
+    <p>
+      Transforming enterprises through the power of play. Games aren't just for fun — they're your
+      most powerful business tool.
+    </p>
+    <div class="footer-links">
+      <a href="#">Services</a>
+      <a href="#">Case Studies</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="footer-right">
+    <p>
+      © 2025 GPlay Studio<br />All rights reserved.<br /><span style="color: var(--neon-cyan)"
+        >企业游戏化</span
+      >
+    </p>
+  </div>
+</footer>
+
+<div class="toast" [class.show]="isToastShow">{{ toastMessage }}</div>
