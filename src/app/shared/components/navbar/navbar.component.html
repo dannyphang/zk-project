@@ -1,12 +1,12 @@
 <nav class="navbar">
-  <a href="#" class="logo">
-    <div class="logo-icon">G▶</div>
-    <span class="logo-text">GPLAY</span>
+  <a (click)="scrollTo('home')" href="home" class="logo">
+    <img class="logo-icon" [src]="logoPath" />
+    <span class="logo-text">Creatie Z</span>
   </a>
 
   <ul class="nav-links">
-    <li><a (click)="scrollTo('services')" href="#services">Services</a></li>
-    <li><a (click)="scrollTo('process')"  href="#process">Case Studies</a></li>
+    <li><a (click)="scrollTo('services')" href="home#services">Services</a></li>
+    <li><a (click)="scrollTo('process')" href="home#process">Case Studies</a></li>
     <li><a href="#">Insights</a></li>
     <li><a href="#">About Us</a></li>
   </ul>

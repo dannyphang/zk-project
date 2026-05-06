@@ -10,6 +10,7 @@ import { GameService } from '../../../services/game.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
+  logoPath: string = 'assets/images/logo.png';
   private game = inject(GameService);
 
   onContact(): void {

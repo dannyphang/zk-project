@@ -9,7 +9,7 @@ import { GameService } from '../../../services/game.service';
   template: `
     <footer>
       <div class="footer-left">
-        <h3>GPLAY STUDIO</h3>
+        <h3>Creative Z</h3>
         <p>
           Transforming enterprises through the power of play. Games aren't just
           for fun — they're your most powerful business tool.
@@ -22,7 +22,7 @@ import { GameService } from '../../../services/game.service';
         </div>
       </div>
       <div class="footer-right">
-        <p>© 2025 GPlay Studio<br>All rights reserved.<br>
+        <p>© 2025 Creative Z<br>All rights reserved.<br>
           <span class="cn">企业游戏化</span>
         </p>
       </div>
