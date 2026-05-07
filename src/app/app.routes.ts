@@ -1,6 +1,7 @@
 // src/app/app.routes.ts
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { TestingComponent } from './pages/testing/testing.component';
 
 export const routes: Routes = [
     {
@@ -16,6 +17,10 @@ export const routes: Routes = [
                 redirectTo: 'home',
                 pathMatch: 'full'
             }
-        ]
+        ],
+    },
+    {
+        path: 'testing64',
+        loadChildren: () => import('./pages/testing/testing.module').then(m => m.TestingModule),
     }
 ];

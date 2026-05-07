@@ -1,4 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@import 'primeicons/primeicons.css';
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(
+    --surface-ground
+  ); /* Optional: Gives a nice PrimeNG default background color / 可选：提供一个漂亮的 PrimeNG 默认背景色 */
+  color: var(--text-color); /* Optional: Sets the default text color / 可选：设置默认文本颜色 */
+}
 
 body {
   margin: 0;
